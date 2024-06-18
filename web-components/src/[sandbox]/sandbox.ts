@@ -78,6 +78,12 @@ export class Sandbox extends LitElement {
     const composedPath = event.composedPath();
     const target = (composedPath[0] as unknown) as HTMLOrSVGElement;
     const { aspect } = target.dataset;
+    const currentFontFamily = document.body.style.fontFamily;
+    if (aspect === "momentumV2") {
+      document.body.style.fontFamily = currentFontFamily.replace('CiscoSansTT', 'Inter');
+    } else {
+      document.body.style.fontFamily = currentFontFamily;
+    }
     if (aspect === "lumos" || aspect === "momentumV2" || aspect === "momentum") {
       this.theme = aspect;
     } else if (aspect === "darkTheme") {
